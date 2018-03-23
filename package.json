@@ -4,6 +4,8 @@
   "description": "A generated project at Fullstack Academy",
   "main": "server/main.js",
   "scripts": {
+    "build": "webpack",
+    "startDev": "npm run build & npm run start",
     "start": "node server/main.js",
     "test": "./node_modules/.bin/mocha server/**/*.test.js --reporter spec",
     "test:player": "node_modules/.bin/testem",
@@ -47,7 +49,7 @@
     "chai-spies": "0.7.1",
     "mocha": "^2.5.1",
     "testem": "1.2.2",
-    "webpack": "^2.2.1",
+    "webpack": "^2.7.0",
     "webpack-dev-middleware": "^1.12.0"
   }
 }
