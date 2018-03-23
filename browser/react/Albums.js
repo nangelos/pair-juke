@@ -60,11 +60,17 @@ const fakeAlbums = [
 class Albums extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      albums: [],
+    };
   }
+
+
 
   render() {
      return (<div className="col-xs-4">
-            <a className="thumbnail" href="#">
+            <a onClick={() => this.props.handleClick(this.props.album)}
+              className="thumbnail" href="#">
               <img src="http://placeholdit.imgix.net/~text?txtsize=33&txt=ALBUMoneIMAGE&w=300&h=300" />
               <div className="caption">
                 <h5>
@@ -78,16 +84,17 @@ class Albums extends React.Component {
   }
 }
 
-const albumCreator = ()=>{
+const albumCreator = (props) => {
   return (
     <div className="col-xs-10">
       <h3>Albums</h3>
       <div className="row">
-        {fakeAlbums.map(album=>
-          <Albums key={album.id} name={album.name} songLength={album.songs.length}/>
+        {props.albums.map(album =>
+          <Albums key={album.id} album={album} name={album.name} songLength={album.songs.length} handleClick={props.handleClick} />
         )}
       </div>
     </div>
   );
-}
+};
+
 module.exports = albumCreator;

@@ -14,7 +14,7 @@
     "postinstall": "npm run db-init"
   },
   "dependencies": {
-    "axios": "^0.15.2",
+    "axios": "^0.15.3",
     "babel-polyfill": "^6.26.0",
     "babel-preset-stage-2": "^6.24.1",
     "body-parser": "^1.12.0",
