@@ -9,6 +9,7 @@ class SingleAlbum extends React.Component {
   }
 
   render() {
+    console.log('single album selected', this.props.selectedAlbum);
      return (
       <div className="album col-xs-10">
         <div>
@@ -31,9 +32,9 @@ class SingleAlbum extends React.Component {
                   <span className="glyphicon glyphicon-play"></span>
                 </button>
               </td>
-              <td>I SHOULD BE A SONG NAME</td>
-              <td>I SHOULD BE A STRING OF THIS SONG'S ARTISTS</td>
-              <td>I SHOULD BE A SONG GENRE</td>
+              <td>{this.props.selectedAlbum.songs[0].name}</td>
+              <td>{this.props.selectedAlbum.artists[0].name}</td>
+              <td>{this.props.selectedAlbum.songs[0].genre}</td>
             </tr>
             <tr>
               <td>
@@ -41,9 +42,9 @@ class SingleAlbum extends React.Component {
                   <span className="glyphicon glyphicon-play"></span>
                 </button>
               </td>
-              <td>I SHOULD BE ANOTHER SONG NAME</td>
-              <td>I SHOULD BE A STRING OF THAT SONG'S ARTISTS</td>
-              <td>I SHOULD BE A SONG GENRE</td>
+               <td>{this.props.selectedAlbum.songs[1].name}</td>
+              <td>{this.props.selectedAlbum.artists[0].name}</td>
+              <td>{this.props.selectedAlbum.songs[1].genre}</td>
             </tr>
           </tbody>
         </table>

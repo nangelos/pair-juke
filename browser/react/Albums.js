@@ -68,8 +68,9 @@ class Albums extends React.Component {
 
 
   render() {
+    console.log('this props ', this.props.album);
      return (<div className="col-xs-4">
-            <a onClick={() => this.props.handleClick(this.props.album)}
+            <a onClick={() => this.props.handleClick(this.props.album.id)}
               className="thumbnail" href="#">
               <img src="http://placeholdit.imgix.net/~text?txtsize=33&txt=ALBUMoneIMAGE&w=300&h=300" />
               <div className="caption">

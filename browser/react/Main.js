@@ -18,9 +18,22 @@ class Goats extends React.Component {
     // this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick = (event) => {
-    this.setState({ selectedAlbum: event });
+  handleClick = (albumId) => {
+    axios.get('/api/albums/' + albumId)
+      .then(response => {
+        return response.data;
+      })
+      .then(data => {
+        this.setState({ selectedAlbum: data });
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
+
+  // handleClick = (event) => { // arrow syntax equivalent to bind method
+  //   this.setState({ selectedAlbum: event });
+  // }
 
   componentDidMount() {
     axios.get('/api/albums')
@@ -28,24 +41,28 @@ class Goats extends React.Component {
       return response.data;
     })
     .then(data => {
-      console.log('success');
-      console.log(data);
       this.setState({albums: data});
     })
     .catch(err => {
-      console.error('error');
       console.error(err);
     });
   }
 
+  singleAlbum() {
+    if ((Object.keys(this.state.selectedAlbum).length) === 0) {
+      return;
+    } else {
+      return <SingleAlbum selectedAlbum={this.state.selectedAlbum} />;
+    }
+  }
+
 
   render() {
-    console.log('main this state', this.state);
     return (
       <div id="main" className="container-fluid">
         <Sidebar />
         <Albums handleClick={this.handleClick} albums={this.state.albums} />
-        <SingleAlbum selectedAlbum={this.state.selectedAlbum} />
+        {this.singleAlbum()}
         <Footer />
       </div>
     );
