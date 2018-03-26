@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import AllAlbums from './AllAlbums';
+import AllArtists from './AllArtists';
 import SingleAlbum from './SingleAlbum';
 import Sidebar from './Sidebar';
 import Player from './Player';
-import { HashRouter, Route, Link } from 'react-router-dom';
-
+import { HashRouter, Route } from 'react-router-dom';
 
 export default class Main extends Component {
-
-  // constructor (props) {
-  //   super(props);
-  // }
 
   render () {
     return (
@@ -23,6 +20,7 @@ export default class Main extends Component {
             <Route exact path="/" component={AllAlbums} />
             <Route exact path="/albums" component={AllAlbums} />
             <Route path="/albums/:albumId" component={SingleAlbum} />
+            <Route path="/artists" component={AllArtists} />
         </div>
         <Player />
       </div>
