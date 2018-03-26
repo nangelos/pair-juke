@@ -18,7 +18,7 @@ class Sidebar extends React.Component {
           <img src="juke.svg" className="logo" />
           <section>
             <h4 className="menu-item active">
-              <a href="#">ALBUMS</a>
+              <a onClick={()=> this.props.handleSidebarClick()} href="#">ALBUMS</a>
             </h4>
           </section>
         </sidebar>

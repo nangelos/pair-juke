@@ -28,7 +28,9 @@ class SingleAlbum extends React.Component {
           <tbody>
             <tr>
               <td>
-                <button className="btn btn-default btn-xs">
+                <button onClick={()=>{
+                  this.props.albumPlaying
+                  this.props.start(this.props.selectedAlbum.songs[0].id)}} id={this.props.selectedAlbum.songs[0].id} className="btn btn-default btn-xs">
                   <span className="glyphicon glyphicon-play"></span>
                 </button>
               </td>
@@ -38,7 +40,7 @@ class SingleAlbum extends React.Component {
             </tr>
             <tr>
               <td>
-                <button className="btn btn-default btn-xs">
+                <button onClick={()=>{this.props.start(this.props.selectedAlbum.songs[1].id)}} className="btn btn-default btn-xs">
                   <span className="glyphicon glyphicon-play"></span>
                 </button>
               </td>
