@@ -3,6 +3,7 @@ import axios from 'axios';
 import AllAlbums from './AllAlbums';
 import AllArtists from './AllArtists';
 import SingleAlbum from './SingleAlbum';
+import SingleArtist from './SingleArtist';
 import Sidebar from './Sidebar';
 import Player from './Player';
 import { HashRouter, Route } from 'react-router-dom';
@@ -20,7 +21,8 @@ export default class Main extends Component {
             <Route exact path="/" component={AllAlbums} />
             <Route exact path="/albums" component={AllAlbums} />
             <Route path="/albums/:albumId" component={SingleAlbum} />
-            <Route path="/artists" component={AllArtists} />
+            <Route exact path="/artists" component={AllArtists} />
+            <Route path="/artists/:artistId" component={SingleArtist} />
         </div>
         <Player />
       </div>
