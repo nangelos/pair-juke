@@ -12,7 +12,7 @@ const Sidebar = (props) => {
       </section>
       <section>
         <h4 className="menu-item">
-          <Link to="/artists">ARTISTS</Link>
+          <Link to="/artists">Artists</Link>
         </h4>
       </section>
     </sidebar>
