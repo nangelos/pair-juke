@@ -60,3 +60,7 @@ footer {
 
 .album img {
   height: 300px; }
+
+.active {
+  background-color: grey;
+}

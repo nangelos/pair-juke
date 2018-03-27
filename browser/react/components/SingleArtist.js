@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, NavLink } from 'react-router-dom';
 import Songs from './Songs';
 import AllAlbums from './AllAlbums';
 import axios from 'axios';
@@ -29,47 +29,25 @@ export default class SingleArtist extends Component {
       this.setState({selectedArtist: data[0]});
       this.setState({artistAlbums: data[1]});
       this.setState({artistSongs: data[2]});
+    })
+    .catch(err => {
+      console.error(err);
     });
   }
 
-  isSelectedArtist() {
-    if (Object.keys(this.state.selectedArtist).length === 0) {
-      return (
-        <div>
-          <h3>ARTIST</h3>
-          <h4>ALBUMS</h4>
-          <h4>SONGS</h4>
-        </div>
-      );
-    } else {
-      const artist = this.state.selectedArtist;
-      const albums = this.state.artistAlbums;
-      const songs = this.state.artistSongs;
-      return (
-        <div>
-          <h3>{artist.name}</h3>
-          <h4>ALBUMS</h4>
-          <AllAlbums albums={albums}/>
-          <h4>SONGS</h4>
-          <Songs songs={songs} />
-      </div>
-      );
-    }
-  }
 
   render () {
 
-    const artist = this.state.selectedArtist; // or however you've named it
-
+    const artist = this.state.selectedArtist;
     return (
       <div>
         <h3>{ artist.name }</h3>
         <ul className="nav nav-tabs">
-          <li><Link to={`/artists/${artist.id}/albums`}>ALBUMS</Link></li>
-          <li><Link to={`/artists/${artist.id}/songs`}>SONGS</Link></li>
+          <li><NavLink to={`/artists/${artist.id}/albums`} activeClassName="active">ALBUMS</NavLink></li>
+          <li><NavLink to={`/artists/${artist.id}/songs`} activeClassName="active">SONGS</NavLink></li>
         </ul>
-        <Route path="/artists/:artistId/albums" render={() => <AllAlbums albums={this.state.artistAlbums}/>}/>
-        <Route path="/artists/:artistId/songs" render={() => <Songs songs={this.state.artistSongs}/>}/>
+        <Route path={`/artists/${artist.id}/albums`} render={() => <AllAlbums albums={this.state.artistAlbums}/>}/>
+        <Route path={`/artists/${artist.id}/songs`}  render={() => <Songs songs={this.state.artistSongs}/>}/>
       </div>
     );
   }
