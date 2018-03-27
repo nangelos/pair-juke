@@ -68,8 +68,8 @@ export default class SingleArtist extends Component {
           <li><Link to={`/artists/${artist.id}/albums`}>ALBUMS</Link></li>
           <li><Link to={`/artists/${artist.id}/songs`}>SONGS</Link></li>
         </ul>
-        {<Route path="/artists/:artistId/albums" render={() => <AllAlbums albums={this.state.artistAlbums}/>}/>}
-        {<Route path="/artists/:artistId/songs" render={() => <Songs songs={this.state.artistSongs}/>}/>}
+        <Route path="/artists/:artistId/albums" render={() => <AllAlbums albums={this.state.artistAlbums}/>}/>
+        <Route path="/artists/:artistId/songs" render={() => <Songs songs={this.state.artistSongs}/>}/>
       </div>
     );
   }
