@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Player = (props) => {
+const Player = () => {
 
   return (
     <footer>
@@ -24,6 +24,6 @@ const Player = (props) => {
       </div>
     </footer>
   );
-}
+};
 
 export default Player;

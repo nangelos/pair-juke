@@ -11,17 +11,17 @@ export default class StatefulAlbums extends Component {
     };
   }
 
-  componentDidMount () {
+  componentDidMount() {
     axios.get('/api/albums/')
       .then(res => res.data)
       .then(albums => {
-        this.setState({ albums })
+        this.setState({ albums });
       });
   }
 
-  render(){
+  render() {
     return (
-      <AllAlbums albums={this.state.albums}/>
-    )
+      <AllAlbums albums={this.state.albums} />
+    );
   }
 }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import SingleArtist from './SingleArtist';
 
 export default class AllArtists extends Component {
   constructor() {
@@ -15,7 +14,7 @@ export default class AllArtists extends Component {
     axios.get('/api/artists/')
       .then(res => res.data)
       .then(artists => {
-        this.setState({ artists })
+        this.setState({ artists });
       });
   }
 

@@ -1,6 +1,4 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import AllAlbums from './AllAlbums';
+import React from 'react';
 import AllArtists from './AllArtists';
 import SingleAlbum from './SingleAlbum';
 import SingleArtist from './SingleArtist';
@@ -9,30 +7,26 @@ import Player from './Player';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import StatefulAlbums from './StatefulAlbums';
 import NoMatch from './NoMatch';
-// import { Switch } from 'react-router';
 
-export default class Main extends Component {
-
-  render () {
+export default function Main() {
     return (
-    <HashRouter>
-      <div id="main" className="container-fluid">
-        <div className="col-xs-2">
-          <Sidebar />
+      <HashRouter>
+        <div id="main" className="container-fluid">
+          <div className="col-xs-2">
+            <Sidebar />
+            </div>
+            <div className="col-xs-10">
+            <Switch>
+              <Route exact path="/" component={StatefulAlbums} />
+              <Route exact path="/albums" component={StatefulAlbums} />
+              <Route path="/albums/:albumId" component={SingleAlbum} />
+              <Route exact path="/artists" component={AllArtists} />
+              <Route path="/artists/:artistId" component={SingleArtist} />
+              <Route path="*" component={NoMatch} />
+            </Switch>
           </div>
-          <div className="col-xs-10">
-          <Switch>
-            <Route exact path="/" component={StatefulAlbums} />
-            <Route exact path="/albums" component={StatefulAlbums} />
-            <Route path="/albums/:albumId" component={SingleAlbum} />
-            <Route exact path="/artists" component={AllArtists} />
-            <Route path="/artists/:artistId" component={SingleArtist} />
-            <Route path="*" component={NoMatch} />
-          </Switch>
+          <Player />
         </div>
-        <Player />
-      </div>
-    </HashRouter>
+      </HashRouter>
     );
-  }
 }
